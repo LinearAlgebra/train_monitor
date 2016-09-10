@@ -1,4 +1,4 @@
-import socket
+import socket, train_monitor
 BUFSIZE = 1024
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -10,5 +10,7 @@ while True:
     client, cltadd = sock.accept()
     print('Receive data from {}.'.format(cltadd))
     data = client.recv(BUFSIZE)
-    client.sendall(b'Data received')
-    print(data.decode('utf8'))
+    data = data.decode('utf8').spilt(' ')
+    train_monitor.train_monitor(data[0],data[1],data[2],data[3])
+    client.sendall(b'Monitor Start')
+    print('Monitor Start')
